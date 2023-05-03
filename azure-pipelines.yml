@@ -3,19 +3,12 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
-#stages:
-#- stage: Deploy
-#  pool: 
-#   name: EG SelfHosted
-   #demands:
-   # - agent.name -equals SP-EGDEV0333
-
 trigger:
 - master
 
 pool:
   vmImage: 'windows-latest'
-  #name: JobOffice SelfHosted
+  #name: EG SelfHosted
 
 variables:
   solution: 'src/MethodBoundaryAspect.Fody.sln'
@@ -25,10 +18,6 @@ variables:
 steps:
 - task: NuGetToolInstaller@1
 
-#- task: NuGetAuthenticate@1
-#  inputs:
-#    forceReinstallCredentialProvider: true
-
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
@@ -36,12 +25,12 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
+    configuration: '$(buildConfiguration)'
+
 - task: NuGetCommand@2
   inputs:
     command: 'push'
-    #packagesToPush: '$(Build.ArtifactStagingDirectory)\**\*.nupkg;!$(Build.ArtifactStagingDirectory)\**\*.snupkg'
     packagesToPush: '$(Build.SourcesDirectory)/src/MethodBoundaryAspect/**/*.nupkg;!$(Build.SourcesDirectory)/src/MethodBoundaryAspect/**/*.snupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: 'fc916700-ae2c-4022-82bf-073da5f2dc77/ded83ae7-1057-42bb-84ad-d1daaf82446e'
-    #platform: '$(buildPlatform)'
+    publishVstsFeed: 'fc916700-ae2c-4022-82bf-073da5f2dc77/b898b3b0-2396-4b2c-af56-9bc745c8bf3a'
     configuration: '$(buildConfiguration)'
