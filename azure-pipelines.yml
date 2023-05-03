@@ -27,7 +27,8 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)\**\*.nupkg;!$(Build.ArtifactStagingDirectory)\**\*.snupkg'
+    #packagesToPush: '$(Build.ArtifactStagingDirectory)\**\*.nupkg;!$(Build.ArtifactStagingDirectory)\**\*.snupkg'
+    packagesToPush: '$(Build.SourcesDirectory)/src/MethodBoundaryAspect/**/*.nupkg;!$(Build.SourcesDirectory)/src/MethodBoundaryAspect/**/*.snupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'fc916700-ae2c-4022-82bf-073da5f2dc77/ded83ae7-1057-42bb-84ad-d1daaf82446e'
     #platform: '$(buildPlatform)'
