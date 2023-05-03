@@ -36,6 +36,8 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
+    configuration: '$(buildConfiguration)'
+
 - task: NuGetCommand@2
   inputs:
     command: 'push'
@@ -45,3 +47,4 @@ steps:
     publishVstsFeed: 'fc916700-ae2c-4022-82bf-073da5f2dc77/ded83ae7-1057-42bb-84ad-d1daaf82446e'
     #platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    
