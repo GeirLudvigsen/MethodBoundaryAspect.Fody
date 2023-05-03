@@ -3,10 +3,10 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
-stages:
-- stage: Deploy
-  pool: 
-   name: EG SelfHosted
+#stages:
+#- stage: Deploy
+#  pool: 
+#   name: EG SelfHosted
    #demands:
    # - agent.name -equals SP-EGDEV0333
 
@@ -15,6 +15,7 @@ trigger:
 
 pool:
   vmImage: 'windows-2019'
+  name: EG SelfHosted
 
 variables:
   solution: 'src/MethodBoundaryAspect.Fody.sln'
