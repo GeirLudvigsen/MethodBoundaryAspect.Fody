@@ -36,6 +36,7 @@
 
   <PropertyGroup>
     <AssetTargetFallback>netstandard2.0</AssetTargetFallback>
+    <Version>0.0.2</Version>
   </PropertyGroup>
   <!--Fixes problems with buildorder when using dotnet build-->
 
